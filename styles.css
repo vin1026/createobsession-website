@@ -70,11 +70,14 @@ main {
 }
 
 .creator-image {
-    width: 150px;
-    height: 150px;
+    width: 20%; /* Use percentage for responsive scaling */
+    max-width: 150px; /* Limit maximum size */
+    height: auto; /* Maintain aspect ratio */
+    aspect-ratio: 1 / 1; /* Ensure width and height are equal */
     background: #ccc; /* Placeholder for creator image */
     margin-right: 20px;
     border-radius: 50%; /* Circular image */
+    object-fit: cover; /* Ensures the image fills the circle without stretching */
 }
 
 .intro-text h1 {
@@ -143,4 +146,36 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center align items */
+        padding: 10px; /* Reduce padding */
+    }
+
+    .logo {
+        margin-bottom: 10px; /* Add space between logo and nav */
+    }
+
+    nav ul {
+        flex-direction: column; /* Stack nav items vertically */
+        align-items: center; /* Center align nav items */
+    }
+
+    nav ul li {
+        margin: 5px 0; /* Add space between nav items */
+    }
+
+    .intro {
+        flex-direction: column; /* Stack intro content vertically */
+        text-align: center; /* Center align text */
+    }
+
+    .creator-image {
+        margin-right: 0; /* Remove right margin */
+        margin-bottom: 20px; /* Add space below the circle */
+    }
 }
