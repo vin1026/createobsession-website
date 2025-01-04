@@ -1,16 +1,16 @@
 /* General Styles */
 body {
-    font-family: 'Georgia', serif; /* Font similar to the original website */
+    font-family: 'Georgia', serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #333; /* Default text color */
-    background-color: #f9f9f9; /* Light background color */
+    color: #8c756a; /* Brown text color */
+    background-color: #fffdfa; /* Cream background */
 }
 
 header {
-    background: #8B4513; /* Brown header background */
-    color: #fff;
+    background: #d9f9ff; /* Narrow blue border color */
+    color: #8c756a; /* Brown text color */
     padding: 10px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -27,7 +27,8 @@ header {
 .logo {
     font-size: 28px;
     font-weight: bold;
-    font-family: 'Playfair Display', serif; /* Elegant font for the logo */
+    font-family: 'Playfair Display', serif;
+    color: #8c756a; /* Brown text color */
 }
 
 nav ul {
@@ -42,7 +43,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #8c756a; /* Brown text color */
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
@@ -50,7 +51,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #FFD700; /* Gold color on hover */
+    color: #ffd700; /* Gold color on hover */
 }
 
 main {
@@ -63,10 +64,11 @@ main {
     display: flex;
     align-items: center;
     margin-bottom: 40px;
-    background-color: #fff; /* White background for intro section */
+    background-color: #fffdfa; /* Cream background */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #d9f9ff; /* Narrow blue border */
 }
 
 .creator-image {
@@ -78,23 +80,24 @@ main {
     margin-right: 20px;
     border-radius: 50%; /* Circular image */
     object-fit: cover; /* Ensures the image fills the circle without stretching */
+    border: 2px solid #d9f9ff; /* Narrow blue border */
 }
 
 .intro-text h1 {
     font-size: 36px;
     margin: 0;
-    color: #8B4513; /* Brown color for heading */
+    color: #8c756a; /* Brown text color */
 }
 
 .intro-text p {
     font-size: 18px;
-    color: #666;
+    color: #8c756a; /* Brown text color */
 }
 
 .featured-posts h2 {
     font-size: 28px;
     margin-bottom: 20px;
-    color: #8B4513; /* Brown color for heading */
+    color: #8c756a; /* Brown text color */
 }
 
 .post-grid {
@@ -104,9 +107,9 @@ main {
 }
 
 .post {
-    background: #fff; /* White background for posts */
+    background: #fffdfa; /* Cream background */
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 2px solid #d9f9ff; /* Narrow blue border */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
@@ -127,17 +130,17 @@ main {
 .post h3 {
     font-size: 20px;
     margin: 0 0 10px;
-    color: #8B4513; /* Brown color for post titles */
+    color: #8c756a; /* Brown text color */
 }
 
 .post p {
     font-size: 14px;
-    color: #666;
+    color: #8c756a; /* Brown text color */
 }
 
 footer {
-    background: #8B4513; /* Brown footer background */
-    color: #fff;
+    background: #d9f9ff; /* Narrow blue border color */
+    color: #8c756a; /* Brown text color */
     text-align: center;
     padding: 10px 0;
     margin-top: 40px;
