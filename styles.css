@@ -1,7 +1,7 @@
 /* General Styles */
 :root {
-    --border-width-top-bottom: 10px; /* Adjust top and bottom border width */
-    --border-width-left-right: 90px; /* Adjust left and right border width */
+    --border-width-top-bottom: 0px; /* No top and bottom border */
+    --border-width-left-right: 80px; /* Left and right border width */
 }
 
 body {
@@ -73,9 +73,10 @@ main {
     padding: 0 20px;
     flex: 1; /* Allow main content to grow and fill remaining space */
     width: 100%; /* Ensure main content spans full width */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 
-/* Updated intro section to align with featured posts */
+/* Updated intro section for mobile */
 .intro {
     display: flex;
     align-items: center;
@@ -124,7 +125,7 @@ main {
     color: #8c756a; /* Brown text color */
 }
 
-/* Updated featured posts section to align with intro section */
+/* Updated featured posts section for mobile */
 .featured-posts {
     width: 100%; /* Make featured posts section span full width */
     box-sizing: border-box; /* Ensure padding and border are included in width */
@@ -191,6 +192,11 @@ footer p {
 
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
+    body {
+        border-left: var(--border-width-left-right) solid #d9f9ff; /* Left border */
+        border-right: var(--border-width-left-right) solid #d9f9ff; /* Right border */
+    }
+
     .header-content {
         flex-direction: column; /* Stack items vertically */
         align-items: center; /* Center align items */
@@ -199,6 +205,7 @@ footer p {
 
     .logo img {
         height: 50px; /* Smaller size for mobile */
+        margin-bottom: 10px; /* Add space below the logo */
     }
 
     nav ul {
@@ -213,10 +220,50 @@ footer p {
     .intro {
         flex-direction: column; /* Stack intro content vertically */
         text-align: center; /* Center align text */
+        padding: 15px; /* Reduce padding for mobile */
+        margin: 0 auto 20px; /* Center the intro section horizontally */
+        width: calc(100% - 40px); /* Adjust width to account for left/right margins */
+        max-width: 500px; /* Limit maximum width for better readability */
+        align-items: center; /* Center align items */
     }
 
     .creator-image {
+        width: 40%; /* Increase size for mobile */
+        max-width: 120px; /* Limit maximum size */
         margin-right: 0; /* Remove right margin */
         margin-bottom: 20px; /* Add space below the circle */
+    }
+
+    .intro-text h1 {
+        font-size: 28px; /* Smaller font size for mobile */
+    }
+
+    .intro-text p {
+        font-size: 16px; /* Smaller font size for mobile */
+    }
+
+    .featured-posts {
+        padding: 0 20px; /* Add padding to align with the border */
+    }
+
+    .featured-posts h2 {
+        font-size: 24px; /* Smaller font size for mobile */
+    }
+
+    .post-grid {
+        grid-template-columns: 1fr; /* Single column layout for mobile */
+        gap: 15px; /* Reduce gap between posts */
+    }
+
+    .post {
+        padding: 15px; /* Reduce padding for mobile */
+    }
+
+    .post h3 {
+        font-size: 18px; /* Smaller font size for mobile */
+    }
+
+    .post p {
+        font-size: 13px; /* Smaller font size for mobile */
     }
 }
