@@ -24,11 +24,10 @@ header {
     padding: 0 20px;
 }
 
-.logo {
-    font-size: 28px;
-    font-weight: bold;
-    font-family: 'Playfair Display', serif;
-    color: #8c756a; /* Brown text color */
+.logo img {
+    height: 80px; /* Increased height for better visibility */
+    width: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure the image behaves as a block element */
 }
 
 nav ul {
@@ -64,23 +63,31 @@ main {
     display: flex;
     align-items: center;
     margin-bottom: 40px;
-    background-color: #fffdfa; /* Cream background */
+    background-color: #FFE6E6; /* Light pink */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border: 2px solid #d9f9ff; /* Narrow blue border */
+    border: 2px solid #8c756a; /* Brown border */
 }
 
 .creator-image {
     width: 20%; /* Use percentage for responsive scaling */
     max-width: 150px; /* Limit maximum size */
     height: auto; /* Maintain aspect ratio */
-    aspect-ratio: 1 / 1; /* Ensure width and height are equal */
-    background: #ccc; /* Placeholder for creator image */
     margin-right: 20px;
+    background-color: #FFE6E6; /* Light pink */
+    border-radius: 50%; /* Circular image */
+    border: 2px solid #8c756a; /* Brown border */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.creator-image img {
+    width: 100%; /* Ensure the image fills the container */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 50%; /* Circular image */
     object-fit: cover; /* Ensures the image fills the circle without stretching */
-    border: 2px solid #d9f9ff; /* Narrow blue border */
 }
 
 .intro-text h1 {
@@ -107,9 +114,9 @@ main {
 }
 
 .post {
-    background: #fffdfa; /* Cream background */
+    background: #FFE6E6; /* Light pink */
     padding: 20px;
-    border: 2px solid #d9f9ff; /* Narrow blue border */
+    border: 2px solid #8c756a; /* Brown border */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
@@ -159,8 +166,8 @@ footer p {
         padding: 10px; /* Reduce padding */
     }
 
-    .logo {
-        margin-bottom: 10px; /* Add space between logo and nav */
+    .logo img {
+        height: 60px; /* Smaller size for mobile */
     }
 
     nav ul {
