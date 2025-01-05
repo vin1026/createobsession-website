@@ -1,4 +1,9 @@
 /* General Styles */
+:root {
+    --border-width-top-bottom: 10px; /* Adjust top and bottom border width */
+    --border-width-left-right: 90px; /* Adjust left and right border width */
+}
+
 body {
     font-family: 'Georgia', serif;
     margin: 0;
@@ -6,13 +11,21 @@ body {
     line-height: 1.6;
     color: #8c756a; /* Brown text color */
     background-color: #fffdfa; /* Cream background */
+    border-top: var(--border-width-top-bottom) solid #d9f9ff; /* Top border */
+    border-bottom: var(--border-width-top-bottom) solid #d9f9ff; /* Bottom border */
+    border-left: var(--border-width-left-right) solid #d9f9ff; /* Left border */
+    border-right: var(--border-width-left-right) solid #d9f9ff; /* Right border */
+    box-sizing: border-box; /* Ensure the border is included in the element's dimensions */
+    min-height: 100vh; /* Ensure the body takes up the full viewport height */
+    display: flex;
+    flex-direction: column;
 }
 
+/* Ensure header spans full width */
 header {
-    background: #d9f9ff; /* Narrow blue border color */
+    background: #d9f9ff; /* Light blue background */
     color: #8c756a; /* Brown text color */
     padding: 10px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .header-content {
@@ -24,8 +37,9 @@ header {
     padding: 0 20px;
 }
 
+/* Updated logo image styling */
 .logo img {
-    height: 80px; /* Increased height for better visibility */
+    height: 60px; /* Adjust the height of the logo as needed */
     width: auto; /* Maintain aspect ratio */
     display: block; /* Ensure the image behaves as a block element */
 }
@@ -57,8 +71,11 @@ main {
     max-width: 1200px;
     margin: 20px auto;
     padding: 0 20px;
+    flex: 1; /* Allow main content to grow and fill remaining space */
+    width: 100%; /* Ensure main content spans full width */
 }
 
+/* Updated intro section to align with featured posts */
 .intro {
     display: flex;
     align-items: center;
@@ -68,6 +85,8 @@ main {
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border: 2px solid #8c756a; /* Brown border */
+    width: 100%; /* Make intro section span full width */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 
 .creator-image {
@@ -90,6 +109,10 @@ main {
     object-fit: cover; /* Ensures the image fills the circle without stretching */
 }
 
+.intro-text {
+    flex: 1; /* Allow text to take up remaining space */
+}
+
 .intro-text h1 {
     font-size: 36px;
     margin: 0;
@@ -99,6 +122,12 @@ main {
 .intro-text p {
     font-size: 18px;
     color: #8c756a; /* Brown text color */
+}
+
+/* Updated featured posts section to align with intro section */
+.featured-posts {
+    width: 100%; /* Make featured posts section span full width */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 
 .featured-posts h2 {
@@ -111,6 +140,8 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
+    width: 100%; /* Ensure post grid spans full width */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 
 .post {
@@ -145,13 +176,13 @@ main {
     color: #8c756a; /* Brown text color */
 }
 
+/* Ensure footer spans full width */
 footer {
-    background: #d9f9ff; /* Narrow blue border color */
+    background: #d9f9ff; /* Light blue background */
     color: #8c756a; /* Brown text color */
     text-align: center;
     padding: 10px 0;
     margin-top: 40px;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 footer p {
@@ -167,7 +198,7 @@ footer p {
     }
 
     .logo img {
-        height: 60px; /* Smaller size for mobile */
+        height: 50px; /* Smaller size for mobile */
     }
 
     nav ul {
