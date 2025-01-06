@@ -76,16 +76,16 @@ main {
     box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 
-/* Updated intro section for mobile */
+/* Updated intro section */
 .intro {
     display: flex;
     align-items: center;
     margin-bottom: 40px;
-    background-color: #FFE6E6; /* Light pink */
+    background-color: #fffdfa; /* creame */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border: 2px solid #8c756a; /* Brown border */
+    border: 2px solid #8c756a; /* Updated border color */
     width: 100%; /* Make intro section span full width */
     box-sizing: border-box; /* Ensure padding and border are included in width */
 }
@@ -97,7 +97,7 @@ main {
     margin-right: 20px;
     background-color: #FFE6E6; /* Light pink */
     border-radius: 50%; /* Circular image */
-    border: 2px solid #8c756a; /* Brown border */
+    border: 2px solid #8c756a; /* Updated border color */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,7 +125,7 @@ main {
     color: #8c756a; /* Brown text color */
 }
 
-/* Updated featured posts section for mobile */
+/* Updated featured posts section */
 .featured-posts {
     width: 100%; /* Make featured posts section span full width */
     box-sizing: border-box; /* Ensure padding and border are included in width */
@@ -146,9 +146,9 @@ main {
 }
 
 .post {
-    background: #FFE6E6; /* Light pink */
+    background: #ebe1ff; /* Light pink */
     padding: 20px;
-    border: 2px solid #8c756a; /* Brown border */
+    border: 2px solid #8c756a; /* Updated border color */
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
