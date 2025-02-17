@@ -2,16 +2,22 @@ async function fetchTutorials() {
     try {
         const response = await fetch('https://createobsession-cms.onrender.com/api/tutorials?populate=*');
         const data = await response.json();
-        console.log('API Response:', data); // Debug log
-        if (!data || !data.data) {
-            console.error('No data received from API');
-            return [];
-        }
+        console.log('API Response:', data);
         return data.data;
     } catch (error) {
         console.error('Error fetching tutorials:', error);
         return [];
     }
+}
+
+function getDescriptionText(description) {
+    if (!Array.isArray(description)) return '';
+    return description.map(block => {
+        if (block.children) {
+            return block.children.map(child => child.text).join('');
+        }
+        return '';
+    }).join('\n');
 }
 
 function displayTutorials(tutorials) {
@@ -21,20 +27,21 @@ function displayTutorials(tutorials) {
         return;
     }
     
-    if (!Array.isArray(tutorials)) {
-        console.error('Expected array of tutorials');
-        return;
-    }
-    
     tutorials.forEach(tutorial => {
         if (tutorial && tutorial.attributes) {
+            const descriptionText = getDescriptionText(tutorial.attributes.description);
+            const imageUrl = tutorial.attributes.featuredImage?.url 
+                ? `https://createobsession-cms.onrender.com${tutorial.attributes.featuredImage.url}`
+                : '';
+            
             const tutorialElement = `
                 <div class="tutorial-card">
-                    <h2>${tutorial.attributes.title || 'Untitled'}</h2>
-                    <p>Difficulty: ${tutorial.attributes.difficultyLevel || 'N/A'}</p>
-                    <p>Duration: ${tutorial.attributes.duration || 0} minutes</p>
+                    ${imageUrl ? `<img src="${imageUrl}" alt="${tutorial.attributes.title}" class="tutorial-image">` : ''}
+                    <h2>${tutorial.attributes.title}</h2>
+                    <p>Difficulty: ${tutorial.attributes.difficultyLevel}</p>
+                    <p>Duration: ${tutorial.attributes.duration} minutes</p>
                     <div class="tutorial-description">
-                        ${tutorial.attributes.description || ''}
+                        ${descriptionText}
                     </div>
                 </div>
             `;
