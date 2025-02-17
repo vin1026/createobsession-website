@@ -4,6 +4,10 @@ async function fetchTutorials() {
         const response = await fetch('https://createobsession-cms.onrender.com/api/tutorials?populate=*');
         const data = await response.json();
         console.log('Received data:', data);
+        if (!data || !data.data) {
+            console.error('Invalid data structure:', data);
+            return [];
+        }
         return data.data;
     } catch (error) {
         console.error('Error fetching tutorials:', error);
@@ -38,16 +42,16 @@ function displayTutorials(tutorials) {
     tutorials.forEach(tutorial => {
         if (tutorial && tutorial.attributes) {
             const descriptionText = getDescriptionText(tutorial.attributes.description);
-            const imageUrl = tutorial.attributes.featuredImage?.url 
-                ? `https://createobsession-cms.onrender.com${tutorial.attributes.featuredImage.url}`
+            const imageUrl = tutorial.attributes.featuredImage?.data?.attributes?.url 
+                ? `https://createobsession-cms.onrender.com${tutorial.attributes.featuredImage.data.attributes.url}`
                 : '';
             
             const tutorialElement = `
                 <div class="tutorial-card">
                     ${imageUrl ? `<img src="${imageUrl}" alt="${tutorial.attributes.title}" class="tutorial-image">` : ''}
-                    <h2>${tutorial.attributes.title}</h2>
-                    <p>Difficulty: ${tutorial.attributes.difficultyLevel}</p>
-                    <p>Duration: ${tutorial.attributes.duration} minutes</p>
+                    <h2>${tutorial.attributes.title || 'Untitled'}</h2>
+                    <p>Difficulty: ${tutorial.attributes.difficultyLevel || 'N/A'}</p>
+                    <p>Duration: ${tutorial.attributes.duration || 0} minutes</p>
                     <div class="tutorial-description">
                         ${descriptionText}
                     </div>
