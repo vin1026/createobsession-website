@@ -276,6 +276,13 @@ footer p {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+.tutorial-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
 .tutorial-card h2 {
     color: #333;
     margin-bottom: 10px;
@@ -283,4 +290,5 @@ footer p {
 
 .tutorial-description {
     margin-top: 15px;
+    line-height: 1.6;
 }
