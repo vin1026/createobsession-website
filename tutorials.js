@@ -2,7 +2,8 @@ async function fetchTutorials() {
     try {
         const response = await fetch('https://createobsession-cms.onrender.com/api/tutorials?populate=*');
         const result = await response.json();
-        console.log('API Response:', result);
+        console.log('Raw API Response:', result);
+        console.log('Data array:', result.data);
         return result.data || [];
     } catch (error) {
         console.error('Error:', error);
@@ -21,6 +22,7 @@ function getDescriptionText(description) {
 }
 
 function displayTutorials(tutorials) {
+    console.log('Tutorials array received:', tutorials);
     const container = document.getElementById('tutorials-container');
     
     if (!container) {
@@ -28,10 +30,16 @@ function displayTutorials(tutorials) {
         return;
     }
 
+    console.log('Number of tutorials:', tutorials.length);
+    
     if (!tutorials.length) {
         container.innerHTML = '<p>No tutorials available.</p>';
         return;
     }
+
+    tutorials.forEach((tutorial, index) => {
+        console.log(`Tutorial ${index}:`, tutorial);
+    });
 
     const html = tutorials.map(tutorial => {
         const description = tutorial.attributes.description[0]?.children[0]?.text || 'No description available';
@@ -58,5 +66,6 @@ function displayTutorials(tutorials) {
 // Load tutorials when page loads
 document.addEventListener('DOMContentLoaded', async () => {
     const tutorials = await fetchTutorials();
+    console.log('Before display:', tutorials);
     displayTutorials(tutorials);
 }); 
