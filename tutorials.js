@@ -42,17 +42,18 @@ function displayTutorials(tutorials) {
     });
 
     const html = tutorials.map(tutorial => {
-        const description = tutorial.attributes.description[0]?.children[0]?.text || 'No description available';
-        const imageUrl = tutorial.attributes.featuredImage?.url
+        const title = tutorial.attributes?.title || 'No title available';
+        const description = tutorial.attributes?.description[0]?.children[0]?.text || 'No description available';
+        const imageUrl = tutorial.attributes?.featuredImage?.url
             ? `https://createobsession-cms.onrender.com${tutorial.attributes.featuredImage.url}`
             : '';
 
         return `
             <div class="tutorial-card">
-                ${imageUrl ? `<img src="${imageUrl}" alt="${tutorial.attributes.title}" class="tutorial-image">` : ''}
-                <h2>${tutorial.attributes.title}</h2>
-                <p>Difficulty: ${tutorial.attributes.difficultyLevel}</p>
-                <p>Duration: ${tutorial.attributes.duration} minutes</p>
+                ${imageUrl ? `<img src="${imageUrl}" alt="${title}" class="tutorial-image">` : ''}
+                <h2>${title}</h2>
+                <p>Difficulty: ${tutorial.attributes?.difficultyLevel || 'Unknown'}</p>
+                <p>Duration: ${tutorial.attributes?.duration || 'Unknown'} minutes</p>
                 <div class="tutorial-description">
                     ${description}
                 </div>
