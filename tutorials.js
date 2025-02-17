@@ -1,24 +1,11 @@
 async function fetchTutorials() {
     try {
-        console.log('Starting fetch...');
-        const url = 'https://createobsession-cms.onrender.com/api/tutorials?populate=*';
-        console.log('Fetching from:', url);
-        
-        const response = await fetch(url);
-        console.log('Response status:', response.status);
-        
-        const data = await response.json();
-        console.log('Raw API response:', data);
-        
-        if (!data || !data.data) {
-            throw new Error('Invalid data structure received');
-        }
-        
-        return data.data;
+        const response = await fetch('https://createobsession-cms.onrender.com/api/tutorials?populate=*');
+        const result = await response.json();
+        console.log('API Response:', result);
+        return result.data || [];
     } catch (error) {
-        console.error('Detailed error:', error);
-        document.getElementById('tutorials-container').innerHTML = 
-            `<p>Error loading tutorials: ${error.message}</p>`;
+        console.error('Error:', error);
         return [];
     }
 }
@@ -35,40 +22,41 @@ function getDescriptionText(description) {
 
 function displayTutorials(tutorials) {
     const container = document.getElementById('tutorials-container');
-    console.log('Tutorials to display:', tutorials);
     
     if (!container) {
-        console.error('Container element not found!');
+        console.error('Container not found');
         return;
     }
 
-    if (!tutorials || tutorials.length === 0) {
-        container.innerHTML = '<p>No tutorials found.</p>';
+    if (!tutorials.length) {
+        container.innerHTML = '<p>No tutorials available.</p>';
         return;
     }
 
-    container.innerHTML = tutorials.map(tutorial => {
-        if (!tutorial || !tutorial.attributes) {
-            console.error('Invalid tutorial data:', tutorial);
-            return '';
-        }
+    const html = tutorials.map(tutorial => {
+        const description = tutorial.attributes.description[0]?.children[0]?.text || 'No description available';
+        const imageUrl = tutorial.attributes.featuredImage?.url
+            ? `https://createobsession-cms.onrender.com${tutorial.attributes.featuredImage.url}`
+            : '';
 
         return `
             <div class="tutorial-card">
-                <h2>${tutorial.attributes.title || 'Untitled'}</h2>
-                <p>Difficulty: ${tutorial.attributes.difficultyLevel || 'N/A'}</p>
-                <p>Duration: ${tutorial.attributes.duration || 0} minutes</p>
+                ${imageUrl ? `<img src="${imageUrl}" alt="${tutorial.attributes.title}" class="tutorial-image">` : ''}
+                <h2>${tutorial.attributes.title}</h2>
+                <p>Difficulty: ${tutorial.attributes.difficultyLevel}</p>
+                <p>Duration: ${tutorial.attributes.duration} minutes</p>
                 <div class="tutorial-description">
-                    ${tutorial.attributes.description?.[0]?.children?.[0]?.text || 'No description available.'}
+                    ${description}
                 </div>
             </div>
         `;
     }).join('');
+
+    container.innerHTML = html;
 }
 
 // Load tutorials when page loads
 document.addEventListener('DOMContentLoaded', async () => {
-    console.log('Page loaded, starting tutorial fetch...');
     const tutorials = await fetchTutorials();
     displayTutorials(tutorials);
 }); 
